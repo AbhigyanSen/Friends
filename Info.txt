@@ -1,0 +1,64 @@
+Rails is based on MVC architehture
+server starts with the command "rails s"
+
+M = Model, 
+    models are databases, we can use anytype of databases we want, nothing changes in the app.
+    We can swap or change the database from mysql to postgresql etc and nothing is needed to be changed in the app.
+    Rails abstracts the way that the database works and model it up for us. 
+    We just need to change the Gemfile.
+V = View
+    views are webpages, like html type of things
+C = Controller
+    controller is bascially the brains behind the scene. (deals with the coding stuff)
+
+The first time when the webpage is opened on port 3000, and after writing "Hello World", we need to go to ..3000/home/index.
+this is fixed using routing ROUTES.RB (config > webpack)
+
+In Some WebPages we basically see a same layout. i.e Same Header and Same Footer.
+Therefore writing the same header and footer code for every web page, we write it on APPLICATION.HTML (app > views > layout)
+    The "yield" hold al these information together that neede to be displayed on the webpages hence we do not need to write the same code again
+
+To display stuff from one file in another file using YIELD, we use "<%='display stuff comes here' %>"
+    But when we are using for loops or in cases where nothing is to bedisplayed then we do not use the '=' sign i.e. "<% %>"
+
+For creating a nav bar we created a file "_HEADER.HTML.ERB" in (app > view > home)
+    when we call this file in "application.html.erb" we do not use the full 'home/_header.html.erb', instead we use 'home/header' because ruby knows thats the header file
+
+root_path
+
+To view all paths in rails "rails routes"
+    Home Controller: HOME_ABOUT_PATH (app > views > home > about.html.erb)
+    Root Controller: ROOT_PATH (config > routes.rb)
+
+Creating CRUD (Create, Read, Update and Delete) == Database part of Rails
+command: "rails g scaffold ...folder name... ...all column names..."
+    here, "rails g scuffold friends first_name:string last_name:string email:string phone:string twitter:string"
+    after executing this command, we see a file '20231220062442_create_friends.rb' in (db > migrate)
+        also supported datatypes are:   binary,
+                                        boolean,
+                                        date,
+                                        datetime,
+                                        decimal,
+                                        float,
+                                        integer,
+                                        primary_key,
+                                        string,
+                                        text,
+                                        time,
+                                        timestamp.
+    after making the columns, or executing the command in the migrate folder there is no schema, i.e now we need to add data into our database
+
+Now to push that migration into our database, we use rails RAILS "DB:MIGRATE" command
+    this creates a/the file "SCHEMA.RB" (db > )
+
+NOTE: Always keep on checking the new files that are created, they might collide with the existing routes
+    here:   app/views/friends/                  # This is the new Directory that is been created (app > views > friends)
+            app/views/friends/index.html.erb
+            app/views/friends/show.html.erb
+            app/views/friends/new.html.erb
+            app/views/friends/_form.html.erb
+            
+Also we see a resources: friends added in "routes.rb" (config > routes.rb)
+            
+
+            
