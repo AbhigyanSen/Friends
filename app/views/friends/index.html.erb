@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Friend List</h1>
+
+<div id="friends">
+  <% @friends.each do |friend| %>
+    <%= render friend %>
+    <p>
+      <%= link_to "Show this Friend", friend %>
+      <%= button_to "Destroy this friend", @friend, method: :delete %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "Add New Friend", new_friend_path %>
