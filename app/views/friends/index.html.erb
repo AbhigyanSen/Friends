@@ -2,14 +2,47 @@
 
 <h1>Friend List</h1>
 
-<div id="friends">
-  <% @friends.each do |friend| %>
-    <%= render friend %>
-    <p>
-      <%= link_to "Show this Friend", friend %>
-      <%= button_to "Destroy this friend", @friend, method: :delete %>
-    </p>
-  <% end %>
-</div>
+<table class = "table table-striped table-bordered table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Twitter</th>
+      <th colspan = "3"></th>
+    </tr>
+  </thread>
+
+  <!--
+  <tbody>
+    <div id="friends">
+      <% @friends.each do |friend| %>
+        <%= render friend %>
+        <p>
+          <%= link_to "Show this Friend", friend %>
+          <%# <%= button_to "Destroy this friend", @friend, method: :delete %>
+        </p>
+      <% end %>
+    </div>
+  </tbody>
+  -->
+
+  <tbody>
+    <% @friends.each do |friend| %>
+      <tr>
+        <td><%= friend.first_name %></td>
+        <td><%= friend.last_name %></td>
+        <td><%= friend.email %></td>
+        <td><%= friend.phone %></td>
+        <td><%= friend.twitter %></td>
+        <td><%= link_to 'Show Friend', friend %></td>
+        <td><%= link_to 'Edit Friend', edit_friend_path(friend) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
 
 <%= link_to "Add New Friend", new_friend_path %>
